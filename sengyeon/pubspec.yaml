@@ -38,6 +38,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   url_launcher: ^6.1.9
   webview_flutter: ^4.0.2
+  firebase_core: ^2.6.1
+  firebase_ml_model_downloader: ^0.2.0+10
   
 
 dev_dependencies:
