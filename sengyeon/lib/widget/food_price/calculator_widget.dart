@@ -50,7 +50,7 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        backgroundColor: Colors.grey[800],
+        backgroundColor: const Color(0xffFFB973),
         title: const Text(
           '농수산물 무게별 가격 확인',
           style: TextStyle(fontSize: 24),
@@ -189,6 +189,13 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
               result[result.length - 1] = value;
               operand = buttonText;
               output = "0";
+            } else if (buttonText == "<-") {
+              if (output.length <= 0) {
+                return;
+              } else {
+                output = output.substring(
+                    0, output.length - 1); //글자의 크기를 줄여쿨력수를 줄이는 방식
+              }
             } else if (buttonText == ".") {
               if (output.contains(".")) {
                 return;
@@ -215,11 +222,7 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
               operand = "";
             } else if (buttonText == "+/-") {
               double value = double.parse(output);
-              if (value < 0) {
-                output = (value).toString(); //음수일 경우 부호 교정
-              } else {
-                output = (-value).toString(); //양수일 경우 부호 교정
-              }
+              output = (-value).toString(); // 클릭할 때마다 부호 교정
             } else {
               if (output == "0") {
                 output = "";

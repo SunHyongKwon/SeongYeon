@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pj_test/view/calendar_page.dart';
+import 'package:pj_test/view/food_calculator.dart';
 import 'package:pj_test/view/food_info_list.dart';
 import 'package:pj_test/view/food_list.dart';
 import 'package:pj_test/view/web_view.dart';
@@ -20,7 +21,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
     const Home(),
     const WebViewPage(),
     const PredictSimul(),
-    const Foodinfolist(),
+    const Calculator(),
     const CalendarPage(),
   ];
 
