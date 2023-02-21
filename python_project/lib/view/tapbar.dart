@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:python_project/view/food_calculator.dart';
+import 'package:python_project/view/food_info_list.dart';
 
 import '../home.dart';
 
@@ -18,7 +18,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
     // const WebView(),
     const Home(),
     const Home(),
-    const Calculator(), //계산기
+    const Foodinfolist(), //농수산물 전체 가격 정보
   ];
 
   // 아이콘이 클릭되었을 때의 이벤트 리스너
