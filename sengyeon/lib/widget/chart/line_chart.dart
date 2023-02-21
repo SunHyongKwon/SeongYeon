@@ -188,6 +188,6 @@ class LineChart extends CustomPainter {
 
   @override
   bool shouldRepaint(LineChart oldDelegate) {
-    return oldDelegate.points != points;
+    return true;
   }
 }
