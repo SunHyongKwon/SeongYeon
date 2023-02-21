@@ -37,3 +37,11 @@ def thirtyTwo(food):
     food_temp = food[food[['상권_코드','서비스_업종_코드']].apply(tuple,1).isin(code)]
     
     return food_temp
+
+def thirtyTwoTwo(food):
+    food_count=food.pivot_table(index=['상권_코드', '상권_코드_명'],aggfunc='size')
+    food_count=pd.DataFrame(food_count[food_count == 32]).reset_index()
+    code=food_count['상권_코드']
+    food_temp = food[food['상권_코드'].isin(code)]
+    
+    return food_temp
