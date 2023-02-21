@@ -13,8 +13,8 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
   int _selectedIndex = 0;
   final List<Widget> _widgetOptions = [
     // 페이지 수정할 부분
-    const WebViewPage(),
     const Home(),
+    const WebViewPage(),
     const Home(),
     const Home(),
     const Home(),

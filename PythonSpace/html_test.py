@@ -2,9 +2,6 @@ from flask import Flask, render_template # render_template는 템플릿 파일�
 
 app = Flask(__name__) #플라스크 객체 실행
 
-@app.route("/")
-def hello():
-    return "Hello"
 
 @app.route("/time") #라우팅 설정
 def time():
@@ -18,13 +15,12 @@ def gender():
 def age():
     return render_template('age.html')
 
-# @app.route("/logging")
-# def logging_test():
-#     test = 1
-#     app.logger.debug('디버깅 필요')
-#     app.logger.warning(str(test) + " 라인")
-#     app.logger.error('에러발생')
-#     return "로깅 "
+# @app.route("/week") #라우팅 설정
+# def week():
+#     return render_template('week.html')
+@app.route("/week") #라우팅 설정
+def week():
+    return render_template('week.html')
 
 if __name__ == "__main__":
     app.run()
