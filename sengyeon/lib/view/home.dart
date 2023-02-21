@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -9,19 +11,28 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  late WebViewController controller = WebViewController()
-    ..loadRequest(Uri.parse('http://127.0.0.1:5000/main'));
+  final Completer<WebViewController> _controller =
+      Completer<WebViewController>();
+
+  // late WebViewController controller = WebViewController()
+  //   ..loadRequest(Uri.parse('http://127.0.0.1:5000/main'))
+  //   ..loadRequest(Uri.parse('http://www.naver.com'))
+  //   ..loadRequest(Uri.parse('http://www.daum.net'));
 
   // late String url;
   late String dropdownValue;
   late List<String> items;
   // late WebViewController controller;
+  late String siteName;
+  late bool isLoading;
 
   @override
   void initState() {
     super.initState();
-    dropdownValue = 'One';
+    dropdownValue = '성별';
     items = ['성별', '연령대별', '시간대별', '요일별'];
+    siteName = 'http://127.0.0.1:5000/main';
+    isLoading = true;
     // loadMap('성별');
   }
 
@@ -48,20 +59,50 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
-      body: SafeArea(
-        child: WebViewWidget(
-          controller: controller,
-        ),
+      // body: SafeArea(
+      //     child: Stack(
+      //   children: [
+      //     WebViewWidget(
+      //       controller: controller,
+      //     ),
+      //   ],
+      // )),
+      body: Stack(
+        children: [
+          WebView(
+            initialUrl: 'https://$siteName',
+            javascriptMode: JavascriptMode.unrestricted,
+            onWebViewCreated: (WebViewController webviewController) {
+              _controller.complete(webviewController);
+            },
+            onPageFinished: (url) {
+              setState(() {
+                isLoading = false;
+              });
+            },
+            onPageStarted: (url) {
+              setState(() {
+                isLoading = true;
+              });
+            },
+          ),
+          isLoading
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : Stack(),
+        ],
       ),
     );
   }
 
-  // loadMap(value) {
-  //   setState(() {
-  //     if (value == '성별') {
-  //       controller = WebViewController()
-  //         ..loadRequest(Uri.parse('https://www.naver.com'));
-  //     } else {}
-  //   });
-  // }
+  loadMap(value) {
+    setState(() {
+      if (value == '성별') {
+        _controller.future.then((value) => value.loadUrl('https://$siteName'));
+        // controller = WebViewController()
+        //   ..loadRequest(Uri.parse('https://www.naver.com'));
+      } else {}
+    });
+  }
 }

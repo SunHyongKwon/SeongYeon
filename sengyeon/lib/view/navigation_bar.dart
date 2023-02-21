@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pj_test/view/web_view.dart';
 import 'home.dart';
 
 class NavigationBarPage extends StatefulWidget {
@@ -12,7 +13,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
   int _selectedIndex = 0;
   final List<Widget> _widgetOptions = [
     // 페이지 수정할 부분
-    const Home(),
+    const WebViewPage(),
     const Home(),
     const Home(),
     const Home(),
