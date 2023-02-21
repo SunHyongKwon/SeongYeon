@@ -41,6 +41,11 @@ dependencies:
   firebase_core: ^2.6.1
   firebase_ml_model_downloader: ^0.2.0+10
   http: ^0.13.5
+  table_calendar: ^3.0.9
+  intl: ^0.18.0
+  kpostal: ^0.5.1
+  sqflite: ^2.2.4+1
+  path: ^1.8.2
   
 
 dev_dependencies:
