@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pj_test/view/calendar_page.dart';
+import 'package:pj_test/view/food_info_list.dart';
+import 'package:pj_test/view/food_list.dart';
 import 'package:pj_test/view/web_view.dart';
+import 'package:pj_test/view/predict.dart';
 import 'home.dart';
 
 class NavigationBarPage extends StatefulWidget {
@@ -13,11 +17,11 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
   int _selectedIndex = 0;
   final List<Widget> _widgetOptions = [
     // 페이지 수정할 부분
+    const Home(),
     const WebViewPage(),
-    const Home(),
-    const Home(),
-    const Home(),
-    const Home(),
+    const PredictSimul(),
+    const Foodinfolist(),
+    const CalendarPage(),
   ];
 
   // 아이콘이 클릭되었을 때의 이벤트 리스너
@@ -50,42 +54,42 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
           BottomNavigationBarItem(
               icon: _selectedIndex == 1
                   ? const Icon(
-                      Icons.map_outlined,
-                      color: Colors.white,
-                    )
-                  : const Icon(
                       Icons.map,
                       color: Colors.white,
-                    ),
-              label: 'map'),
-          BottomNavigationBarItem(
-              icon: _selectedIndex == 1
-                  ? const Icon(
-                      Icons.money,
-                      color: Colors.white,
                     )
                   : const Icon(
-                      Icons.money,
+                      Icons.map_outlined,
                       color: Colors.white,
                     ),
               label: 'map'),
           BottomNavigationBarItem(
               icon: _selectedIndex == 2
                   ? const Icon(
-                      Icons.map,
+                      Icons.money,
+                      color: Colors.white,
+                    )
+                  : const Icon(
+                      Icons.money_outlined,
+                      color: Colors.white,
+                    ),
+              label: 'map'),
+          BottomNavigationBarItem(
+              icon: _selectedIndex == 3
+                  ? const Icon(
+                      Icons.shopping_bag,
                       color: Colors.white,
                     )
                   : const Icon(Icons.shopping_bag_outlined,
                       color: Colors.white),
               label: 'media'),
           BottomNavigationBarItem(
-              icon: _selectedIndex == 3
+              icon: _selectedIndex == 4
                   ? const Icon(
-                      Icons.calendar_month_outlined,
+                      Icons.calendar_month,
                       color: Colors.white,
                     )
                   : const Icon(
-                      Icons.calendar_month,
+                      Icons.calendar_month_outlined,
                       color: Colors.white,
                     ),
               label: 'shop'),
