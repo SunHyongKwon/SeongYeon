@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pj_test/view/calendar_page.dart';
 import 'package:pj_test/view/web_view.dart';
 import 'home.dart';
 
@@ -17,7 +18,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
     const Home(),
     const Home(),
     const Home(),
-    const Home(),
+    const CalendarPage(),
   ];
 
   // 아이콘이 클릭되었을 때의 이벤트 리스너
