@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:path/path.dart';
+import 'package:pj_test/view_model/calendar_viewmodel.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../model/calendar.dart';
@@ -22,7 +23,7 @@ class DatabaseHandler {
     int result = 0;
     final Database db = await initializeDB(); //그런애있냐 하고 이니셜라이징하고
     result = await db.rawInsert(
-        "insert into cal(title, inex, income, expenditure, content, writeday) values(?,?,?,?,?,?)",
+        "insert into cal (title, inex, income, expenditure, content, writeday) values(?,?,?,?,?,?)",
         [
           calendar.title,
           calendar.inex,
@@ -39,22 +40,53 @@ class DatabaseHandler {
     final Database db = await initializeDB();
     final List<Map<String, Object?>> queryResult = await db
         .rawQuery("select * from cal"); //셀렉트 때문에 ap<String, Object?> toMap()만듬
+    print(queryResult);
     return queryResult.map((e) => Calendar.fromMap(e)).toList();
   }
 
 // 날짜 오름차순
-  Future<List<Calendar>> queryYear() async {
+  Future<List<Calendar>> queryYear(String? selectedDate) async {
+    final Database db = await initializeDB();
+
+    final List<Map<String, Object?>> queryResult = await db.rawQuery(
+        "select * from cal where writeday == ?",
+        [selectedDate]); //셀렉트 때문에 ap<String, Object?> toMap()만듬
+    return queryResult.map((e) => Calendar.fromMap(e)).toList();
+  }
+
+  // 날짜별 데이터 가져오기
+  Future<List<Calendar>> querySelectDate(DateTime date) async {
     final Database db = await initializeDB();
     final List<Map<String, Object?>> queryResult = await db.rawQuery(
         "select * from cal order by writeday"); //셀렉트 때문에 ap<String, Object?> toMap()만듬
     return queryResult.map((e) => Calendar.fromMap(e)).toList();
   }
 
-  Future<List<Calendar>> queryIncom() async {
+  // 수입 합계
+  queryIncom() async {
     final Database db = await initializeDB();
     final List<Map<String, Object?>> queryResult = await db.rawQuery(
-        "select sum(income) from cal where id "); //셀렉트 때문에 ap<String, Object?> toMap()만듬
-    return queryResult.map((e) => Calendar.fromMap(e)).toList();
+        "select sum(income) as sum from cal"); //셀렉트 때문에 ap<String, Object?> toMap()만듬
+    int result = int.parse(queryResult[0]['sum'].toString());
+    CalendartVM.income = result;
+  }
+
+  // 지출합계
+  queryExpenditure() async {
+    final Database db = await initializeDB();
+    final List<Map<String, Object?>> queryResult = await db.rawQuery(
+        "select sum(expenditure) as sum from cal"); //셀렉트 때문에 ap<String, Object?> toMap()만듬
+    int result = int.parse(queryResult[0]['sum'].toString());
+    CalendartVM.expenditure = result;
+  }
+
+  // 지출합계
+  Future<void> queryTotal() async {
+    final Database db = await initializeDB();
+    final List<Map<String, Object?>> queryResult = await db.rawQuery(
+        "select sum(income) - sum(expenditure) as sum from cal"); //셀렉트 때문에 ap<String, Object?> toMap()만듬
+    int result = int.parse(queryResult[0]['sum'].toString());
+    CalendartVM.total = result;
   }
 
   // 삭제

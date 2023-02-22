@@ -1,11 +1,12 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:pj_test/view_model/calendar_viewmodel.dart';
 
 import '../../repository/database_handler.dart';
 
 class CurrentStatus extends StatefulWidget {
-  const CurrentStatus({super.key});
+  final Stream<String> stream;
+  const CurrentStatus({super.key, required this.stream});
 
   @override
   State<CurrentStatus> createState() => _CurrentStatusState();
@@ -13,122 +14,152 @@ class CurrentStatus extends StatefulWidget {
 
 class _CurrentStatusState extends State<CurrentStatus> {
   late DatabaseHandler handler;
+  var f = NumberFormat.currency(locale: 'ko_KR', symbol: '₩');
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     handler = DatabaseHandler();
+    handler.queryIncom();
+    handler.queryExpenditure();
+    handler.queryTotal().then((value) {
+      setState(() {});
+    });
+
+    widget.stream.listen((event) {
+      handler.queryIncom();
+      handler.queryExpenditure();
+      handler.queryTotal().then((value) {
+        setState(() {});
+      });
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 110,
-      width: 370,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30.0),
-        color: Color.fromARGB(154, 255, 185, 115),
-      ),
-      child: Column(
-        children: [
-          const Padding(
-            padding: EdgeInsets.all(10.0),
-            child: Text(
-              "이번달 현황",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
+    final textStyledefault =
+        TextStyle(fontSize: 14, fontWeight: FontWeight.w600);
+    return Column(
+      children: [
+        const SizedBox(
+          height: 15,
+        ),
+        Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 100,
+              height: 40,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Color(0xffFFB973),
+              ),
+              child: const Center(
+                child: Text(
+                  "수입",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
               ),
             ),
-          ),
-          Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                width: 60,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.white,
-                ),
-                child: const Text(
-                  "수입",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
+            SizedBox(
+              width: 20,
+            ),
+            Container(
+              width: 100,
+              height: 40,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Color(0xffFFB973),
               ),
-              Container(
-                width: 60,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.white,
-                ),
-                child: const Text(
-                  "지출",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-              ),
-              Container(
-                width: 60,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.white,
-                ),
-                child: const Text(
-                  "합계",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                width: 60,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                ),
+              child: const Center(
                 child: Text(
-                  "수입금액",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-              ),
-              Container(
-                width: 60,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: const Text(
                   "지출",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
               ),
-              Container(
-                width: 60,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: const Text(
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            Container(
+              width: 100,
+              height: 40,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Color(0xffFFB973),
+              ),
+              child: const Center(
+                child: Text(
                   "합계",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
               ),
-            ],
-          ),
-        ],
-      ),
+            ),
+          ],
+        ),
+        const SizedBox(
+          height: 8,
+        ),
+        Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 100,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Text(
+                f.format(CalendartVM.income).toString(),
+                textAlign: TextAlign.center,
+                style: textStyledefault,
+              ),
+            ),
+            const SizedBox(
+              width: 20,
+            ),
+            Container(
+              width: 100,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Text(
+                f.format(CalendartVM.expenditure).toString(),
+                textAlign: TextAlign.center,
+                style: textStyledefault,
+              ),
+            ),
+            const SizedBox(
+              width: 20,
+            ),
+            Container(
+              width: 100,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Text(
+                f.format(CalendartVM.total).toString(),
+                textAlign: TextAlign.center,
+                style: textStyledefault,
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
