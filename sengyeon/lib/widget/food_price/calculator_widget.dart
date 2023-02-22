@@ -152,6 +152,11 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
               //밑에 계산 list를 만들어서 토글처럼 숨기는 기능 추가해서 제품가격입력 삭제가능하도록 해보기
             ],
           ),
+//           Row(
+//             children: [
+// //
+//             ],
+//           ),
         ],
       ),
     );
