@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:pj_test/widget/FoodList/button.dart';
-import 'package:pj_test/widget/FoodList/listView.dart';
+import 'package:pj_test/widget/foodList/button.dart';
+import 'package:pj_test/widget/foodList/listView.dart';
 
 class FoodList extends StatelessWidget {
   const FoodList({super.key});
