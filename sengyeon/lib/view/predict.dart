@@ -35,7 +35,13 @@ class _PredictSimulState extends State<PredictSimul>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('당신의 수익이 얼마일까?'),
+        title: const Text(
+          '매장의 매출을 예측해 보세요',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Color.fromARGB(216, 255, 255, 255),
+          ),
+        ),
         backgroundColor: const Color(0xffFFB973),
       ),
       body: Column(

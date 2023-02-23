@@ -1,3 +1,0 @@
-```{r}
-read.csv('./Data/global_cost.csv')
-```

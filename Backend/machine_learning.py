@@ -15,11 +15,11 @@ app = Flask(__name__)
 
 @app.route("/predict")
 def predict():
-    shop = int(request.args.get('shop'))
-    open = int(request.args.get('open'))
-    franchise = int(request.args.get('franchise'))
-    worker = int(request.args.get('worker'))
-    teenWorker = int(request.args.get('teen'))
+    shop = float(request.args.get('shop'))
+    open = float(request.args.get('open'))
+    franchise = float(request.args.get('franchise'))
+    worker = float(request.args.get('worker'))
+    teenWorker = float(request.args.get('teen'))
     dong = str(request.args.get('dong'))
 
     clf = joblib.load('gwanak_ridge_model.h5')
@@ -62,6 +62,7 @@ def predict():
     pre = clf.predict(feature.to_numpy())
 
     return jsonify({'result' : pre[0]})
+
 
 @app.route("/time") #라우팅 설정
 def time():
