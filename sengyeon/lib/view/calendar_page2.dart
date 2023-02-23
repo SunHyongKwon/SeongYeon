@@ -40,7 +40,8 @@ class _CalendarPage2State extends State<CalendarPage2> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(left: 6),
+                          padding: const EdgeInsets.only(
+                              left: 6, top: 10, bottom: 5),
                           child: Text(
                             snapshot.data![index].writeday.toString(),
                             style: const TextStyle(
