@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:isolate';
 
 import 'package:flutter/material.dart';
 
@@ -26,71 +25,157 @@ class Home extends StatelessWidget {
               ])),
         ),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            GestureDetector(
-              onTap: () {
-                controller.add(1);
-              },
-              child: Image.asset('images/map.png'),
-            ),
-            // ElevatedButton(
-            //   style: ElevatedButton.styleFrom(
-            //     backgroundColor: Colors.white,
-            //   ),
-            //   onPressed: () {
-            //     controller.add(1);
-            //   },
-            //   // child: const Text('WebView'),
-            //   child: Image.asset(
-            //     'images/map.png',
-            //     width: 430,
-            //     height: 150,
-            //     fit: BoxFit.fill,
-            //   ),
-            // ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SizedBox(
-                width: 280,
-                height: 45,
-                child: ElevatedButton(
-                  onPressed: () {
-                    controller.add(2);
-                  },
-                  child: const Text('Chart'),
-                ),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Stack(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        controller.add(1);
+                      },
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(30),
+                        child: Image.asset('images/map.png'),
+                      ),
+                    ),
+                  ),
+                  const Positioned(
+                    top: 210,
+                    left: 30,
+                    child: Text(
+                      '지도보러가기',
+                      style: TextStyle(
+                        fontSize: 24, // 글꼴 크기
+                        fontWeight: FontWeight.bold, // 글꼴 가중치
+                        fontStyle: FontStyle.italic, // 글꼴 스타일
+                        letterSpacing: 1.5, // 글자 간격
+                        wordSpacing: 5, // 단어 간격
+                        height: 1.5, // 줄 간격
+                        shadows: [
+                          Shadow(
+                            offset: Offset(1, 1),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SizedBox(
-                width: 280,
-                height: 45,
-                child: ElevatedButton(
-                  onPressed: () {
-                    controller.add(3);
-                  },
-                  child: const Text('FoodList'),
-                ),
+              Stack(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        controller.add(2);
+                      },
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(30),
+                        child: Image.asset('images/chart.png'),
+                      ),
+                    ),
+                  ),
+                  const Positioned(
+                    top: 210,
+                    left: 30,
+                    child: Text(
+                      '차트보러가기',
+                      style: TextStyle(
+                        fontSize: 24, // 글꼴 크기
+                        fontWeight: FontWeight.bold, // 글꼴 가중치
+                        fontStyle: FontStyle.italic, // 글꼴 스타일
+                        letterSpacing: 1.5, // 글자 간격
+                        wordSpacing: 5, // 단어 간격
+                        height: 1.5, // 줄 간격
+                        shadows: [
+                          Shadow(
+                            offset: Offset(1, 1),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SizedBox(
-                width: 280,
-                height: 45,
-                child: ElevatedButton(
-                  onPressed: () {
-                    controller.add(4);
-                  },
-                  child: const Text('Calendar'),
-                ),
+              Stack(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        controller.add(3);
+                      },
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(30),
+                        child: Image.asset('images/food.png'),
+                      ),
+                    ),
+                  ),
+                  const Positioned(
+                    top: 210,
+                    left: 30,
+                    child: Text(
+                      '농수산물 갸격표',
+                      style: TextStyle(
+                        fontSize: 24, // 글꼴 크기
+                        fontWeight: FontWeight.bold, // 글꼴 가중치
+                        fontStyle: FontStyle.italic, // 글꼴 스타일
+                        letterSpacing: 1.5, // 글자 간격
+                        wordSpacing: 5, // 단어 간격
+                        height: 1.5, // 줄 간격
+                        shadows: [
+                          Shadow(
+                            offset: Offset(1, 1),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
+              Stack(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        controller.add(4);
+                      },
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(30),
+                        child: Image.asset('images/calendar.png'),
+                      ),
+                    ),
+                  ),
+                  const Positioned(
+                    top: 270,
+                    left: 30,
+                    child: Text(
+                      '가게부 작성',
+                      style: TextStyle(
+                        fontSize: 24, // 글꼴 크기
+                        fontWeight: FontWeight.bold, // 글꼴 가중치
+                        fontStyle: FontStyle.italic, // 글꼴 스타일
+                        letterSpacing: 1.5, // 글자 간격
+                        wordSpacing: 5, // 단어 간격
+                        height: 1.5, // 줄 간격
+                        shadows: [
+                          Shadow(
+                            offset: Offset(1, 1),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
