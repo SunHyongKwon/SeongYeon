@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:isolate';
 
 import 'package:flutter/material.dart';
 
@@ -29,19 +30,27 @@ class Home extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SizedBox(
-                width: 280,
-                height: 45,
-                child: ElevatedButton(
-                  onPressed: () {
-                    controller.add(1);
-                  },
-                  child: const Text('WebView'),
-                ),
-              ),
+            GestureDetector(
+              onTap: () {
+                controller.add(1);
+              },
+              child: Image.asset('images/map.png'),
             ),
+            // ElevatedButton(
+            //   style: ElevatedButton.styleFrom(
+            //     backgroundColor: Colors.white,
+            //   ),
+            //   onPressed: () {
+            //     controller.add(1);
+            //   },
+            //   // child: const Text('WebView'),
+            //   child: Image.asset(
+            //     'images/map.png',
+            //     width: 430,
+            //     height: 150,
+            //     fit: BoxFit.fill,
+            //   ),
+            // ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: SizedBox(

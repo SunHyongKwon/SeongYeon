@@ -41,7 +41,7 @@ class _CalendarPageState extends State<CalendarPage>
                 text: "달력",
               ),
               Tab(
-                text: "월별",
+                text: "일별",
               ),
             ]),
         iconTheme: const IconThemeData(
