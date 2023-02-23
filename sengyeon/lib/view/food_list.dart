@@ -12,7 +12,20 @@ class FoodList extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 45,
         title: const Text('Food List'),
+        centerTitle: true,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: <Color>[
+                Color(0xffFFB973),
+                Colors.white38,
+                Color(0xffFFB973),
+              ])),
+        ),
       ),
       body: Center(
         child: Column(
