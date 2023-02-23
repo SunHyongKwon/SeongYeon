@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:pj_test/view/navigation_bar.dart';
 
@@ -14,13 +12,17 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 3), () {
-      Navigator.pop(context);
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const NavigationBarPage()),
-      );
-    });
+
+    Future.delayed(
+      const Duration(seconds: 3),
+      () {
+        Navigator.pop(context);
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const NavigationBarPage()),
+        );
+      },
+    );
   }
 
   @override

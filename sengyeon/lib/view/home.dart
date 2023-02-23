@@ -25,6 +25,7 @@ class Home extends StatelessWidget {
               ])),
         ),
       ),
+      // body: const Text('1'),
       body: SingleChildScrollView(
         child: Center(
           child: Column(
@@ -40,7 +41,7 @@ class Home extends StatelessWidget {
                       },
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(30),
-                        child: Image.asset('images/map.png'),
+                        child: Image.asset('images/map.jpeg'),
                       ),
                     ),
                   ),
@@ -76,7 +77,7 @@ class Home extends StatelessWidget {
                       },
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(30),
-                        child: Image.asset('images/chart.png'),
+                        child: Image.asset('images/charttt.png'),
                       ),
                     ),
                   ),
