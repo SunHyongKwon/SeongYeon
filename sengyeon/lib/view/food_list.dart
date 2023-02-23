@@ -11,28 +11,14 @@ class FoodList extends StatelessWidget {
     StreamController<String> controller = StreamController();
 
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 45,
-        title: const Text('Food List'),
-        centerTitle: true,
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: <Color>[
-                Color(0xffFFB973),
-                Colors.white38,
-                Color(0xffFFB973),
-              ])),
-        ),
-      ),
-      body: Center(
-        child: Column(
-          children: [
-            SizedBox(child: TopButton(controller: controller)),
-            Expanded(child: FoodListView(stream: controller.stream)),
-          ],
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            children: [
+              SizedBox(child: TopButton(controller: controller)),
+              Expanded(child: FoodListView(stream: controller.stream)),
+            ],
+          ),
         ),
       ),
     );

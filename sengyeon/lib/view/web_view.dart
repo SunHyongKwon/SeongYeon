@@ -20,22 +20,22 @@ class _WebViewPageState extends State<WebViewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 45,
-        title: Text(WebViewModel.appbarTitle),
-        centerTitle: true,
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: <Color>[
-                Color(0xffFFB973),
-                Colors.white38,
-                Color(0xffFFB973),
-              ])),
-        ),
-      ),
+      // appBar: AppBar(
+      //   toolbarHeight: 45,
+      //   title: Text(WebViewModel.appbarTitle),
+      //   centerTitle: true,
+      //   flexibleSpace: Container(
+      //     decoration: const BoxDecoration(
+      //         gradient: LinearGradient(
+      //             begin: Alignment.topLeft,
+      //             end: Alignment.bottomRight,
+      //             colors: <Color>[
+      //           Color(0xffFFB973),
+      //           Colors.white38,
+      //           Color(0xffFFB973),
+      //         ])),
+      //   ),
+      // ),
       body: Stack(
         children: [
           Visibility(
@@ -59,7 +59,7 @@ class _WebViewPageState extends State<WebViewPage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.fromLTRB(15, 70, 15, 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [

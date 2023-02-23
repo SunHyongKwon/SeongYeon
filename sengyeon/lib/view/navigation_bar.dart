@@ -61,54 +61,55 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
               icon: _selectedIndex == 0
                   ? const Icon(
                       Icons.home_filled,
-                      color: Colors.white,
+                      color: const Color.fromARGB(255, 255, 148, 33),
                     )
-                  : const Icon(Icons.home_outlined, color: Colors.white),
+                  : const Icon(Icons.home_outlined,
+                      color: Color.fromARGB(255, 255, 148, 33)),
               label: 'home'),
           BottomNavigationBarItem(
               icon: _selectedIndex == 1
                   ? const Icon(
                       Icons.map,
-                      color: Colors.white,
+                      color: const Color.fromARGB(255, 255, 148, 33),
                     )
                   : const Icon(
                       Icons.map_outlined,
-                      color: Colors.white,
+                      color: const Color.fromARGB(255, 255, 148, 33),
                     ),
               label: 'map'),
           BottomNavigationBarItem(
               icon: _selectedIndex == 2
                   ? const Icon(
                       Icons.money,
-                      color: Colors.white,
+                      color: const Color.fromARGB(255, 255, 148, 33),
                     )
                   : const Icon(
                       Icons.money_outlined,
-                      color: Colors.white,
+                      color: const Color.fromARGB(255, 255, 148, 33),
                     ),
               label: 'map'),
           BottomNavigationBarItem(
               icon: _selectedIndex == 3
                   ? const Icon(
                       Icons.shopping_bag,
-                      color: Colors.white,
+                      color: const Color.fromARGB(255, 255, 148, 33),
                     )
                   : const Icon(Icons.shopping_bag_outlined,
-                      color: Colors.white),
+                      color: Color.fromARGB(255, 255, 148, 33)),
               label: 'media'),
           BottomNavigationBarItem(
               icon: _selectedIndex == 4
                   ? const Icon(
                       Icons.calendar_month,
-                      color: Colors.white,
+                      color: const Color.fromARGB(255, 255, 148, 33),
                     )
                   : const Icon(
                       Icons.calendar_month_outlined,
-                      color: Colors.white,
+                      color: const Color.fromARGB(255, 255, 148, 33),
                     ),
               label: 'shop'),
         ],
-        backgroundColor: const Color(0xffFFB973),
+        backgroundColor: null,
         onTap: _onItemTapped,
         showSelectedLabels: false, // label 숨기기
         showUnselectedLabels: false, // label 숨기기

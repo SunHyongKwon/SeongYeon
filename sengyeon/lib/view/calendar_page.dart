@@ -31,11 +31,12 @@ class _CalendarPageState extends State<CalendarPage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         bottom: TabBar(
             controller: controller,
-            indicatorColor: Colors.white,
-            labelColor: Colors.white,
-            unselectedLabelColor: Colors.grey,
+            indicatorColor: Color.fromARGB(255, 255, 163, 72),
+            labelColor: Color.fromARGB(255, 255, 163, 72),
+            unselectedLabelColor: Color.fromARGB(255, 252, 199, 145),
             tabs: const [
               Tab(
                 text: "달력",
