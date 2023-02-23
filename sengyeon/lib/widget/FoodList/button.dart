@@ -27,13 +27,13 @@ class _TopButtonState extends State<TopButton> {
                     });
                   },
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.black,
+                    foregroundColor: Colors.white,
                     backgroundColor: const Color(0xffFFB973),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                       side: const BorderSide(color: Colors.white),
                     ),
-                    elevation: 3.0,
+                    elevation: 0.0,
                   ),
                   child: const Text('식량작물'),
                 ),
@@ -47,13 +47,13 @@ class _TopButtonState extends State<TopButton> {
                     });
                   },
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.black,
+                    foregroundColor: Colors.white,
                     backgroundColor: const Color(0xffFFB973),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                       side: const BorderSide(color: Colors.white),
                     ),
-                    elevation: 3.0,
+                    elevation: 0.0,
                   ),
                   child: const Text('채소류'),
                 ),
@@ -67,13 +67,13 @@ class _TopButtonState extends State<TopButton> {
                     });
                   },
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.black,
+                    foregroundColor: Colors.white,
                     backgroundColor: const Color(0xffFFB973),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                       side: const BorderSide(color: Colors.white),
                     ),
-                    elevation: 3.0,
+                    elevation: 0.0,
                   ),
                   child: const Text('특용작물'),
                 ),
@@ -87,13 +87,13 @@ class _TopButtonState extends State<TopButton> {
                     });
                   },
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.black,
+                    foregroundColor: Colors.white,
                     backgroundColor: const Color(0xffFFB973),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                       side: const BorderSide(color: Colors.white),
                     ),
-                    elevation: 3.0,
+                    elevation: 0.0,
                   ),
                   child: const Text('과일류'),
                 ),
@@ -107,13 +107,13 @@ class _TopButtonState extends State<TopButton> {
                     });
                   },
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.black,
+                    foregroundColor: Colors.white,
                     backgroundColor: const Color(0xffFFB973),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                       side: const BorderSide(color: Colors.white),
                     ),
-                    elevation: 3.0,
+                    elevation: 0.0,
                   ),
                   child: const Text('수산물'),
                 ),

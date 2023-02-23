@@ -68,7 +68,7 @@ class _FoodListViewState extends State<FoodListView> {
     }
     return Card(
       margin: const EdgeInsets.all(0), // 카드간의 간격
-      elevation: 50,
+      // elevation: 50,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0.0)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -117,34 +117,31 @@ class _FoodListViewState extends State<FoodListView> {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 14),
-                    child: Text(
-                      '${f.format(foodListModel.price)}원',
-                      style: const TextStyle(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 14),
+                  child: Text(
+                    '${f.format(foodListModel.price)}원',
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 14),
+                  child: Text(
+                    foodListModel.weight.toString() + FoodListModel.priceUnit,
+                    style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
+                        color: Colors.black),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 14),
-                    child: Text(
-                      foodListModel.weight.toString() + FoodListModel.priceUnit,
-                      style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],
