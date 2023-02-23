@@ -7,6 +7,12 @@ class Calendar {
   final String content;
   final String writeday;
 
+  static List<String> calc = [
+    'sum(income)',
+    'sum(expenditure)',
+    'sum(income) - sum(expenditure)'
+  ];
+
   Calendar(
       {this.id,
       required this.title,
@@ -42,24 +48,3 @@ class Calendar {
     return 'Calendar{id: $id, title: $title, inex: $inex, income: $income, expenditure: $expenditure, content: $content, writeday: $writeday}';
   }
 }
-
-// class Income {
-//   final int? income;
-
-//   Income({
-//     required this.income,
-//   });
-
-//   Income.fromMap(Map<String, dynamic> res) : income = res["income"];
-
-//   Map<String, Object?> toMap() {
-//     return {
-//       "income": income,
-//     };
-//   }
-
-//   @override
-//   String toString() {
-//     return 'Income{income: $income}';
-//   }
-// }

@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:pj_test/view/navigation_bar.dart';
+import 'package:pj_test/view/loading_%20screen.dart';
 
 void main() async {
   WidgetsFlutterBinding();
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const NavigationBarPage(),
+        '/': (context) => const LoadingScreen(),
       },
     );
   }

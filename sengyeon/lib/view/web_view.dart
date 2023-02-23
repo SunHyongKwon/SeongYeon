@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:pj_test/view_model/web_view.dart';
+import 'package:pj_test/model/web_view.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebViewPage extends StatefulWidget {
@@ -21,8 +21,20 @@ class _WebViewPageState extends State<WebViewPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xffFFB973),
+        toolbarHeight: 45,
         title: Text(WebViewModel.appbarTitle),
+        centerTitle: true,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: <Color>[
+                Color(0xffFFB973),
+                Colors.white38,
+                Color(0xffFFB973),
+              ])),
+        ),
       ),
       body: Stack(
         children: [
@@ -98,7 +110,6 @@ class _WebViewPageState extends State<WebViewPage> {
       WebViewModel.siteName = 'http://127.0.0.1:5000/week';
     }
     WebViewModel.appbarTitle = value + ' 매출';
-    Navigator.popUntil(context, (route) => route.isFirst);
     _controller.future.then((value) => value.loadUrl(WebViewModel.siteName));
   }
 }

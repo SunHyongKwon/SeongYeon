@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:pj_test/view/calendar_page.dart';
+import 'package:pj_test/view/food_list.dart';
 import 'package:pj_test/view/web_view.dart';
 import 'package:pj_test/view/predict.dart';
 import 'home.dart';
@@ -12,15 +15,28 @@ class NavigationBarPage extends StatefulWidget {
 }
 
 class _NavigationBarPageState extends State<NavigationBarPage> {
+  StreamController<int> controller = StreamController();
+
   int _selectedIndex = 0;
-  final List<Widget> _widgetOptions = [
-    // 페이지 수정할 부분
-    const Home(),
-    const WebViewPage(),
-    const PredictSimul(),
-    const Home(),
-    const CalendarPage(),
-  ];
+  late List<Widget> _widgetOptions;
+
+  @override
+  void initState() {
+    super.initState();
+    _widgetOptions = [
+      // 페이지 수정할 부분
+      Home(controller: controller),
+      const WebViewPage(),
+      const PredictSimul(),
+      const FoodList(),
+      const CalendarPage(),
+    ];
+    controller.stream.listen((event) {
+      setState(() {
+        _selectedIndex = event;
+      });
+    });
+  }
 
   // 아이콘이 클릭되었을 때의 이벤트 리스너
   // 클릭된 인덱스로 _selectedIndex에 할당하고 build 함수를 호출한다(setState)
