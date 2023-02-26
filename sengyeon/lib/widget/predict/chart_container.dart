@@ -19,6 +19,7 @@ class ChartContainer extends StatefulWidget {
 class _ChartContainerState extends State<ChartContainer> {
   late List<double> points = [];
   late List<String> labels = [];
+<<<<<<< HEAD
   late int start;
   late int realStart;
   late int interval;
@@ -42,6 +43,13 @@ class _ChartContainerState extends State<ChartContainer> {
             : 1;
     btnAddColor = const Color.fromARGB(255, 177, 195, 255);
     btnReduceColor = const Color.fromARGB(66, 0, 0, 0);
+=======
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
     makeChart();
   }
 
@@ -58,11 +66,16 @@ class _ChartContainerState extends State<ChartContainer> {
                 widget.text,
                 style: const TextStyle(
                   fontSize: 20,
+<<<<<<< HEAD
                   color: Color.fromARGB(255, 0, 0, 0),
+=======
+                  color: Color.fromARGB(255, 254, 138, 15),
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(
+<<<<<<< HEAD
                 height: 10,
               ),
               Row(
@@ -105,6 +118,9 @@ class _ChartContainerState extends State<ChartContainer> {
               ),
               const SizedBox(
                 height: 20,
+=======
+                height: 40,
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
               ),
               CustomPaint(
                 size: const Size(300, 200),
@@ -112,6 +128,7 @@ class _ChartContainerState extends State<ChartContainer> {
                   points: points,
                   labels: labels,
                   pointSize: 15.0, // 점의 크기를 정합니다.
+<<<<<<< HEAD
                   lineWidth: 3.0, // 선의 굵기를 정합니다.
                   lineColor:
                       const Color.fromARGB(255, 250, 187, 187), // 선의 색을 정합니다.
@@ -125,6 +142,16 @@ class _ChartContainerState extends State<ChartContainer> {
                   height: 10,
                   indent: 10,
                 ),
+=======
+                  lineWidth: 5.0, // 선의 굵기를 정합니다.
+                  lineColor:
+                      const Color.fromARGB(255, 254, 138, 15), // 선의 색을 정합니다.
+                  pointColor: const Color.fromARGB(255, 254, 138, 15),
+                ),
+              ),
+              const SizedBox(
+                height: 40,
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
               ),
             ],
           );
@@ -136,18 +163,27 @@ class _ChartContainerState extends State<ChartContainer> {
   /// 수정날짜 :
   /// 완성날짜 :
   /// 설명 : labelsMap 과 pointsMap 만들기
+<<<<<<< HEAD
   makeChart() async {
+=======
+  makeChart({start = 10}) async {
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
     /// 1. 머신러닝 예측 하기 위해 service와 연결 시켜야 된다.
     /// 1-1. 타입 별로 받아올 service를 나눠야 될 것 같다.
     SimulationService simService = SimulationService();
 
+<<<<<<< HEAD
     Map map = {};
+=======
+    Map map;
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
 
     if (widget.type == 'shop') {
       // 점포수 바뀔 시에 받아올 부분
       map = await simService.changeShop(start: start);
     } else if (widget.type == 'pop') {
       // 직장 인구수 바뀔 시에 받아올 부분
+<<<<<<< HEAD
       map = await simService.changePop(start: start);
     } else if (widget.type == 'franchise') {
       // 프랜차이즈 점포 수 바뀔 시에 받아올 부분
@@ -155,11 +191,25 @@ class _ChartContainerState extends State<ChartContainer> {
     }
 
     /// 2. 받아온 값을 labelsMap과 pointsMap에 연결해야 된다.
+=======
+      map = await simService.changePop();
+    } else if (widget.type == 'franchise') {
+      // 프랜차이즈 점포 수 바뀔 시에 받아올 부분
+      map = await simService.changeFranchise();
+    } else {
+      map = {};
+    }
+
+    /// 2. 받아온 값을 labelsMap과 pointsMap에 연결해야 된다.
+
+    // 오류 방지
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
     setState(() {
       labels = map['labels'];
       points = map['points'];
     });
   }
+<<<<<<< HEAD
 
   /// --------------------------------------------------
   /// 작성자 : 권순형
@@ -212,4 +262,6 @@ class _ChartContainerState extends State<ChartContainer> {
 
     setState(() {});
   }
+=======
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
 }

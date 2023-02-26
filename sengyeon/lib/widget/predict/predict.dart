@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -7,6 +8,9 @@ import 'package:pj_test/widget/predict/inputview.dart/inputview_four.dart';
 import 'package:pj_test/widget/predict/inputview.dart/inputview_one.dart';
 import 'package:pj_test/widget/predict/inputview.dart/inputview_three.dart';
 import 'package:pj_test/widget/predict/inputview.dart/inputview_two.dart';
+=======
+import 'package:flutter/material.dart';
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
 
 class Predict extends StatefulWidget {
   const Predict({super.key});
@@ -16,6 +20,7 @@ class Predict extends StatefulWidget {
 }
 
 class _PredictState extends State<Predict> {
+<<<<<<< HEAD
   final StreamController<int> controller = StreamController();
 
   late List<bool> stackList;
@@ -195,4 +200,14 @@ class _PredictState extends State<Predict> {
 
     setState(() {});
   }
+=======
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        children: const [Text('1')],
+      ),
+    );
+  }
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
 }

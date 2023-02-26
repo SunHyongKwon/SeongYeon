@@ -1,7 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:pj_test/model/web_view.dart';
+=======
+import 'package:pj_test/view_model/web_view.dart';
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebViewPage extends StatefulWidget {
@@ -20,6 +24,7 @@ class _WebViewPageState extends State<WebViewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+<<<<<<< HEAD
       // appBar: AppBar(
       //   toolbarHeight: 45,
       //   title: Text(WebViewModel.appbarTitle),
@@ -36,6 +41,12 @@ class _WebViewPageState extends State<WebViewPage> {
       //         ])),
       //   ),
       // ),
+=======
+      appBar: AppBar(
+        backgroundColor: const Color(0xffFFB973),
+        title: Text(WebViewModel.appbarTitle),
+      ),
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
       body: Stack(
         children: [
           Visibility(
@@ -59,7 +70,11 @@ class _WebViewPageState extends State<WebViewPage> {
             ),
           ),
           Padding(
+<<<<<<< HEAD
             padding: const EdgeInsets.fromLTRB(15, 70, 15, 0),
+=======
+            padding: const EdgeInsets.all(15.0),
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -110,6 +125,10 @@ class _WebViewPageState extends State<WebViewPage> {
       WebViewModel.siteName = 'http://127.0.0.1:5000/week';
     }
     WebViewModel.appbarTitle = value + ' 매출';
+<<<<<<< HEAD
+=======
+    Navigator.popUntil(context, (route) => route.isFirst);
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
     _controller.future.then((value) => value.loadUrl(WebViewModel.siteName));
   }
 }

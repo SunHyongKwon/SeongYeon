@@ -8,6 +8,7 @@ class SimulationService {
   /// 수정날짜 :
   /// 완성날짜 :
   /// 설명 : shop의 개수를 변경해서 예측값이 어떻게 변화하는지 포인터를 가져온다.
+<<<<<<< HEAD
   Future<Map> changeShop({start = 0}) async {
     // 포인트 받을 변수 선언
     List<double> points = [];
@@ -43,6 +44,16 @@ class SimulationService {
     for (var element in popList) {
       var url = Uri.parse(
           'http://127.0.0.1:5000/predict?shop=38.08099352051836&franchise=6.054535637149028&open=2.23866090712743&worker=$element&dong=%EB%8C%80%ED%95%99%EB%8F%99&teen=0.5556155507559395');
+=======
+  Future<Map> changeShop({start}) async {
+    // 포인트 받을 변수 선언
+    List<double> points = [];
+
+    // 1. flask 연결
+    for (var element in [80, 20, 20, 30, 40, 50, 60, 70, 90, 100]) {
+      var url = Uri.parse(
+          'http://127.0.0.1:5000/predict?shop=$element&franchise=10&open=1&worker=100000&dong=%EB%82%9C%EA%B3%A1%EB%8F%99&teen=1000');
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
       var response = await http.get(url);
       var dataConvertedJSON = json.decode(utf8.decode(response.bodyBytes));
       double result = dataConvertedJSON['result'];
@@ -58,6 +69,7 @@ class SimulationService {
     return test;
   }
 
+<<<<<<< HEAD
   Future<Map> changeFranchise({start = 0}) async {
     // 포인트 받을 변수 선언
     List<double> points = [];
@@ -78,11 +90,18 @@ class SimulationService {
     Map test = {
       'labels': ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
       'points': points
+=======
+  Future<Map> changePop() async {
+    Map test = {
+      'labels': ['1', '2', '3', '4', '5', '6'],
+      'points': [50.0, 100.0, 20.0, 40.0, 70.0, 30.0]
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
     };
 
     return test;
   }
 
+<<<<<<< HEAD
   /// --------------------------------------------------
   /// 작성자 : 권순형
   /// 시작날짜 : 2022.02.23
@@ -99,5 +118,13 @@ class SimulationService {
     double result = dataConvertedJSON['result'];
 
     return result;
+=======
+  Future<Map> changeFranchise() async {
+    Map test = {
+      'labels': ['1', '2', '3', '4', '5', '6'],
+      'points': [50.0, 100.0, 20.0, 40.0, 70.0, 30.0]
+    };
+    return test;
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
   }
 }

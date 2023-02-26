@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:pj_test/view/calendar_page1.dart';
 import 'package:pj_test/view/calendar_page2.dart';
 
@@ -60,4 +61,43 @@ class _CalendarPageState extends State<CalendarPage>
       ),
     );
   }
+=======
+import 'package:pj_test/widget/web_view/calendarCo.dart';
+import 'package:pj_test/widget/web_view/clist.dart';
+import 'package:pj_test/widget/web_view/current_status.dart';
+
+class CalendarPage extends StatelessWidget {
+  const CalendarPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              CalendarCo(),
+              CurrentStatus(),
+              Clist(),
+            ],
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          //_showAddEventDialog();
+        },
+        label: const Text(
+          "+",
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
+  }
+
+  // function
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
 }
