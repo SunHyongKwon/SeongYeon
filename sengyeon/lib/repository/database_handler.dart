@@ -1,10 +1,18 @@
+<<<<<<< HEAD
 import 'package:path/path.dart';
 import 'package:pj_test/model/calendar_model.dart';
+=======
+import 'package:flutter/material.dart';
+import 'package:path/path.dart';
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
 import 'package:sqflite/sqflite.dart';
 
 import '../model/calendar.dart';
 
+<<<<<<< HEAD
 // Table 생성
+=======
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
 class DatabaseHandler {
   Future<Database> initializeDB() async {
     String path = await getDatabasesPath();
@@ -23,7 +31,11 @@ class DatabaseHandler {
     int result = 0;
     final Database db = await initializeDB(); //그런애있냐 하고 이니셜라이징하고
     result = await db.rawInsert(
+<<<<<<< HEAD
         "insert into cal (title, inex, income, expenditure, content, writeday) values(?,?,?,?,?,?)",
+=======
+        "insert into cal(title, inex, income, expenditure, content, writeday) values(?,?,?,?,?,?)",
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
         [
           calendar.title,
           calendar.inex,
@@ -35,6 +47,7 @@ class DatabaseHandler {
     return result;
   }
 
+<<<<<<< HEAD
 //   // 데이터 불러오기
 //   Future<List<Calendar>> queryCal() async {
 //     final Database db = await initializeDB();
@@ -76,6 +89,31 @@ class DatabaseHandler {
     }
   }
 
+=======
+  // 데이터 불러오기
+  Future<List<Calendar>> queryCal() async {
+    final Database db = await initializeDB();
+    final List<Map<String, Object?>> queryResult = await db
+        .rawQuery("select * from cal"); //셀렉트 때문에 ap<String, Object?> toMap()만듬
+    return queryResult.map((e) => Calendar.fromMap(e)).toList();
+  }
+
+// 날짜 오름차순
+  Future<List<Calendar>> queryYear() async {
+    final Database db = await initializeDB();
+    final List<Map<String, Object?>> queryResult = await db.rawQuery(
+        "select * from cal order by writeday"); //셀렉트 때문에 ap<String, Object?> toMap()만듬
+    return queryResult.map((e) => Calendar.fromMap(e)).toList();
+  }
+
+  Future<List<Calendar>> queryIncom() async {
+    final Database db = await initializeDB();
+    final List<Map<String, Object?>> queryResult = await db.rawQuery(
+        "select sum(income) from cal where id "); //셀렉트 때문에 ap<String, Object?> toMap()만듬
+    return queryResult.map((e) => Calendar.fromMap(e)).toList();
+  }
+
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
   // 삭제
   Future<void> deleteCal(int id) async {
     var db = await initializeDB();

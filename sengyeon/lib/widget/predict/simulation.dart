@@ -16,6 +16,7 @@ class Simul extends StatelessWidget {
         scrollDirection: Axis.vertical,
         child: Column(
           children: [
+<<<<<<< HEAD
             const SizedBox(
               height: 20,
             ),
@@ -49,6 +50,8 @@ class Simul extends StatelessWidget {
                 indent: 10,
               ),
             ),
+=======
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
             const ChartContainer(
               text: '상권에 점포수가 많으면 매출이 늘어날까?',
               type: 'shop',
@@ -62,7 +65,11 @@ class Simul extends StatelessWidget {
               type: 'franchise',
             ),
             const SizedBox(
+<<<<<<< HEAD
               height: 20,
+=======
+              height: 40,
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
             ),
             ElevatedButton(
               onPressed: () {
@@ -72,12 +79,16 @@ class Simul extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromARGB(255, 254, 138, 15),
               ),
+<<<<<<< HEAD
               child: const Text(
                 '복합적으로 판단해보기',
                 style: TextStyle(
                   color: Colors.white,
                 ),
               ),
+=======
+              child: const Text('복합적으로 판단해보기'),
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
             ),
             const SizedBox(
               height: 40,

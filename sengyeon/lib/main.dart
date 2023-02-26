@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
+<<<<<<< HEAD
 import 'package:pj_test/view/loading_%20screen.dart';
 
 void main() async {
@@ -9,6 +10,21 @@ void main() async {
   runApp(const MyApp());
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+=======
+import 'package:pj_test/firebase_options.dart';
+import 'package:pj_test/view/navigation_bar.dart';
+
+void main() async {
+  // WidgetsFlutterBinding();
+  // await initializeDateFormatting();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const MyApp());
+
+  // await Firebase.initializeApp();
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
 }
 
 class MyApp extends StatelessWidget {
@@ -43,7 +59,11 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
+<<<<<<< HEAD
         '/': (context) => const LoadingScreen(),
+=======
+        '/': (context) => const NavigationBarPage(),
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
       },
     );
   }

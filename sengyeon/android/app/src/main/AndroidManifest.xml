@@ -1,7 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     package="com.example.pj_test">
    <application
         android:label="pj_test"
+=======
+    package="com.example.python_project">
+   <application
+        android:label="python_project"
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

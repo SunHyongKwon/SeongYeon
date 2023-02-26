@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import 'dart:math';
+=======
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -31,9 +34,16 @@ class LineChart extends CustomPainter {
     List<Offset> offsets = getCoordinates(points, size); // 점들이 그려질 좌표를 구합니다.
 
     drawText(canvas, offsets); // 텍스트를 그립니다. 최저값과 최고값 위아래에 적은 텍스트입니다.
+<<<<<<< HEAD
     drawLines(canvas, size, offsets); // 구한 좌표를 바탕으로 선을 그립니다.
     drawPoints(canvas, size, offsets); // 좌표에 따라 점을 그립니다.
     drawXLabels(canvas, size, offsets); // x축을 그려줍니다.
+=======
+
+    drawLines(canvas, size, offsets); // 구한 좌표를 바탕으로 선을 그립니다.
+    // drawPoints(canvas, size, offsets); // 좌표에 따라 점을 그립니다.
+    drawXLabels(canvas, size, offsets);
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
   }
 
   void drawLines(Canvas canvas, Size size, List<Offset> offsets) {
@@ -63,10 +73,17 @@ class LineChart extends CustomPainter {
     for (int index = 0; index < labels.length; index++) {
       TextSpan span = TextSpan(
           style: TextStyle(
+<<<<<<< HEAD
               color: const Color.fromARGB(255, 100, 72, 45),
               fontSize: fontSize * 1.8,
               fontFamily: 'Roboto',
               fontWeight: FontWeight.bold),
+=======
+              color: Colors.black,
+              fontSize: fontSize * 1.5,
+              fontFamily: 'Roboto',
+              fontWeight: FontWeight.w400),
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
           text: labels[index]);
 
       TextPainter tp =
@@ -74,8 +91,13 @@ class LineChart extends CustomPainter {
       tp.layout();
 
       Offset offset = coordinates[index];
+<<<<<<< HEAD
       double dx = offset.dx - 6;
       double dy = size.height - tp.height * 1.5;
+=======
+      double dx = offset.dx;
+      double dy = size.height - tp.height + fontSize * 2;
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
 
       tp.paint(canvas, Offset(dx, dy));
     }
@@ -114,14 +136,24 @@ class LineChart extends CustomPainter {
     double minY = points.reduce(
         (current, next) => current < next ? current : next); // 데이터 중 최대값을 구합니다.
 
+<<<<<<< HEAD
     double bottomPadding = fontSize * 0.8; // 텍스트가 들어갈 패딩(아랫쪽)을 구합니다.
     double topPadding = fontSize * 5; // 텍스트가 들어갈 패딩(위쪽)을 구합니다.
+=======
+    double bottomPadding = fontSize * 2; // 텍스트가 들어갈 패딩(아랫쪽)을 구합니다.
+    double topPadding = bottomPadding * 2; // 텍스트가 들어갈 패딩(위쪽)을 구합니다.
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
     double h = size.height - topPadding; // 패딩을 제외한 화면의 높이를 구합니다.
 
     for (int index = 0; index < points.length; index++) {
       double x = spacing * index; // x축 좌표를 구합니다.
+<<<<<<< HEAD
       double normalizedY = (points[index] - minY) /
           (maxY - minY); // 정규화한다. 정규화란 [0 ~ 1] 사이가 나오게 값을 변경하는 것.
+=======
+      double normalizedY =
+          points[index] / maxY; // 정규화한다. 정규화란 [0 ~ 1] 사이가 나오게 값을 변경하는 것.
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
       double y =
           getYPos(h, bottomPadding, normalizedY); // Y축 좌표를 구합니다. 높이에 비례한 값입니다.
 
@@ -153,6 +185,7 @@ class LineChart extends CustomPainter {
   }
 
   void drawText(Canvas canvas, List<Offset> offsets) {
+<<<<<<< HEAD
     double maxValue =
         points.reduce((current, next) => current > next ? current : next);
     String max = (((maxValue / pow(10, 7)).round()) / 10).toString();
@@ -162,12 +195,27 @@ class LineChart extends CustomPainter {
 
     drawTextValue(canvas, '$min억', offsets[minValueIndex], false);
     drawTextValue(canvas, '$max억', offsets[maxValueIndex], true);
+=======
+    String maxValue = points
+        .reduce((current, next) => current > next ? current : next)
+        .toString();
+    String minValue = points
+        .reduce((current, next) => current < next ? current : next)
+        .toString();
+
+    drawTextValue(canvas, minValue, offsets[minValueIndex], false);
+    drawTextValue(canvas, maxValue, offsets[maxValueIndex], true);
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
   }
 
   void drawTextValue(Canvas canvas, String text, Offset pos, bool textUpward) {
     TextSpan maxSpan = TextSpan(
         style: TextStyle(
+<<<<<<< HEAD
             fontSize: fontSize * 0.7,
+=======
+            fontSize: fontSize,
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
             color: Colors.black,
             fontWeight: FontWeight.bold),
         text: text);
@@ -176,8 +224,13 @@ class LineChart extends CustomPainter {
     tp.layout();
 
     double y = textUpward
+<<<<<<< HEAD
         ? -tp.height * 1.7
         : tp.height * 0.7; // 텍스트의 방향을 고려해 y축 값을 보정해줍니다.
+=======
+        ? -tp.height * 1.5
+        : tp.height * 0.5; // 텍스트의 방향을 고려해 y축 값을 보정해줍니다.
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
     double dx = pos.dx - tp.width / 2; // 텍스트의 위치를 고려해 x축 값을 보정해줍니다.
     double dy = pos.dy + y;
 

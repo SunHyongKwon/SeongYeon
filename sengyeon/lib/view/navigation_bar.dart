@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:pj_test/view/calendar_page.dart';
+=======
+import 'package:flutter/material.dart';
+import 'package:pj_test/view/calendar_page.dart';
+import 'package:pj_test/view/food_calculator.dart';
+import 'package:pj_test/view/food_info_list.dart';
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
 import 'package:pj_test/view/food_list.dart';
 import 'package:pj_test/view/web_view.dart';
 import 'package:pj_test/view/predict.dart';
@@ -15,6 +22,7 @@ class NavigationBarPage extends StatefulWidget {
 }
 
 class _NavigationBarPageState extends State<NavigationBarPage> {
+<<<<<<< HEAD
   StreamController<int> controller = StreamController();
 
   int _selectedIndex = 0;
@@ -37,6 +45,17 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
       });
     });
   }
+=======
+  int _selectedIndex = 0;
+  final List<Widget> _widgetOptions = [
+    // 페이지 수정할 부분
+    const Home(),
+    const WebViewPage(),
+    const PredictSimul(),
+    const Calculator(),
+    const CalendarPage(),
+  ];
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
 
   // 아이콘이 클릭되었을 때의 이벤트 리스너
   // 클릭된 인덱스로 _selectedIndex에 할당하고 build 함수를 호출한다(setState)
@@ -61,46 +80,76 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
               icon: _selectedIndex == 0
                   ? const Icon(
                       Icons.home_filled,
+<<<<<<< HEAD
                       color: const Color.fromARGB(255, 255, 148, 33),
                     )
                   : const Icon(Icons.home_outlined,
                       color: Color.fromARGB(255, 255, 148, 33)),
+=======
+                      color: Colors.white,
+                    )
+                  : const Icon(Icons.home_outlined, color: Colors.white),
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
               label: 'home'),
           BottomNavigationBarItem(
               icon: _selectedIndex == 1
                   ? const Icon(
                       Icons.map,
+<<<<<<< HEAD
                       color: const Color.fromARGB(255, 255, 148, 33),
                     )
                   : const Icon(
                       Icons.map_outlined,
                       color: const Color.fromARGB(255, 255, 148, 33),
+=======
+                      color: Colors.white,
+                    )
+                  : const Icon(
+                      Icons.map_outlined,
+                      color: Colors.white,
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
                     ),
               label: 'map'),
           BottomNavigationBarItem(
               icon: _selectedIndex == 2
                   ? const Icon(
                       Icons.money,
+<<<<<<< HEAD
                       color: const Color.fromARGB(255, 255, 148, 33),
                     )
                   : const Icon(
                       Icons.money_outlined,
                       color: const Color.fromARGB(255, 255, 148, 33),
+=======
+                      color: Colors.white,
+                    )
+                  : const Icon(
+                      Icons.money_outlined,
+                      color: Colors.white,
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
                     ),
               label: 'map'),
           BottomNavigationBarItem(
               icon: _selectedIndex == 3
                   ? const Icon(
                       Icons.shopping_bag,
+<<<<<<< HEAD
                       color: const Color.fromARGB(255, 255, 148, 33),
                     )
                   : const Icon(Icons.shopping_bag_outlined,
                       color: Color.fromARGB(255, 255, 148, 33)),
+=======
+                      color: Colors.white,
+                    )
+                  : const Icon(Icons.shopping_bag_outlined,
+                      color: Colors.white),
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
               label: 'media'),
           BottomNavigationBarItem(
               icon: _selectedIndex == 4
                   ? const Icon(
                       Icons.calendar_month,
+<<<<<<< HEAD
                       color: const Color.fromARGB(255, 255, 148, 33),
                     )
                   : const Icon(
@@ -110,6 +159,17 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
               label: 'shop'),
         ],
         backgroundColor: null,
+=======
+                      color: Colors.white,
+                    )
+                  : const Icon(
+                      Icons.calendar_month_outlined,
+                      color: Colors.white,
+                    ),
+              label: 'shop'),
+        ],
+        backgroundColor: const Color(0xffFFB973),
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
         onTap: _onItemTapped,
         showSelectedLabels: false, // label 숨기기
         showUnselectedLabels: false, // label 숨기기

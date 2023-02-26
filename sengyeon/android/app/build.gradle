@@ -8,7 +8,11 @@ if (localPropertiesFile.exists()) {
 
 def flutterRoot = localProperties.getProperty('flutter.sdk')
 if (flutterRoot == null) {
+<<<<<<< HEAD
     throw new FileNotFoundException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+=======
+    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
 }
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
@@ -22,13 +26,17 @@ if (flutterVersionName == null) {
 }
 
 apply plugin: 'com.android.application'
+<<<<<<< HEAD
 // START: FlutterFire Configuration
 apply plugin: 'com.google.gms.google-services'
 // END: FlutterFire Configuration
+=======
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
+<<<<<<< HEAD
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
@@ -37,6 +45,11 @@ android {
         noCompress 'lite'
     }
 
+=======
+    compileSdkVersion 33
+    ndkVersion flutter.ndkVersion
+
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -51,6 +64,7 @@ android {
     }
 
     defaultConfig {
+<<<<<<< HEAD
         minSdkVersion 19
 }
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
@@ -58,6 +72,14 @@ android {
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
         minSdkVersion flutter.minSdkVersion
+=======
+
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId "com.example.python_project"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
+        minSdkVersion 19
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -70,7 +92,11 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+<<<<<<< HEAD
 
+=======
+}
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
 
 flutter {
     source '../..'
@@ -79,4 +105,7 @@ flutter {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> f5e2574c158a68d3fdd1de79f861ea83ed056aaa
