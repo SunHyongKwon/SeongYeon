@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pj_test/view/calendar_page1.dart';
 import 'package:pj_test/view/calendar_page2.dart';
+import 'package:pj_test/view/search.dart';
 
 class CalendarPage extends StatefulWidget {
   const CalendarPage({super.key});
@@ -15,14 +16,12 @@ class _CalendarPageState extends State<CalendarPage>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    controller = TabController(length: 2, vsync: this);
+    controller = TabController(length: 3, vsync: this);
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     controller.dispose();
     super.dispose();
   }
@@ -34,15 +33,18 @@ class _CalendarPageState extends State<CalendarPage>
         backgroundColor: Colors.white,
         bottom: TabBar(
             controller: controller,
-            indicatorColor: Color.fromARGB(255, 255, 163, 72),
-            labelColor: Color.fromARGB(255, 255, 163, 72),
-            unselectedLabelColor: Color.fromARGB(255, 252, 199, 145),
+            indicatorColor: const Color.fromARGB(255, 255, 163, 72),
+            labelColor: const Color.fromARGB(255, 255, 163, 72),
+            unselectedLabelColor: const Color.fromARGB(255, 252, 199, 145),
             tabs: const [
               Tab(
                 text: "달력",
               ),
               Tab(
                 text: "일별",
+              ),
+              Tab(
+                text: "검색",
               ),
             ]),
         iconTheme: const IconThemeData(
@@ -56,6 +58,7 @@ class _CalendarPageState extends State<CalendarPage>
         children: const [
           CalendarPage1(),
           CalendarPage2(),
+          SearchPage(),
         ],
       ),
     );

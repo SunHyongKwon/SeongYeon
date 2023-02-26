@@ -67,8 +67,7 @@ class _FoodListViewState extends State<FoodListView> {
       FoodListModel.priceUnit = 'kg';
     }
     return Card(
-      margin: const EdgeInsets.all(0),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0.0)),
+      // margin: const EdgeInsets.all(0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

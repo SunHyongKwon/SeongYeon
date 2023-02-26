@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:pj_test/view/food_calculator.dart';
 
 class Home extends StatelessWidget {
   final StreamController<int> controller;
@@ -187,7 +188,12 @@ class Home extends StatelessWidget {
                       padding: const EdgeInsets.all(15.0),
                       child: GestureDetector(
                         onTap: () {
-                          // controller.add(4);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) {
+                              return const Calculator();
+                            }),
+                          );
                         },
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(30),

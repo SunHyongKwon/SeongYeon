@@ -20,22 +20,6 @@ class _WebViewPageState extends State<WebViewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   toolbarHeight: 45,
-      //   title: Text(WebViewModel.appbarTitle),
-      //   centerTitle: true,
-      //   flexibleSpace: Container(
-      //     decoration: const BoxDecoration(
-      //         gradient: LinearGradient(
-      //             begin: Alignment.topLeft,
-      //             end: Alignment.bottomRight,
-      //             colors: <Color>[
-      //           Color(0xffFFB973),
-      //           Colors.white38,
-      //           Color(0xffFFB973),
-      //         ])),
-      //   ),
-      // ),
       body: Stack(
         children: [
           Visibility(
@@ -70,7 +54,7 @@ class _WebViewPageState extends State<WebViewPage> {
                   ),
                   child: DropdownButton(
                     hint: const SizedBox(
-                      width: 200,
+                      width: 120,
                       child: Center(
                         child: Text('업종선택'),
                       ),

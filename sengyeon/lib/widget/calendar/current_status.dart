@@ -33,8 +33,10 @@ class _CurrentStatusState extends State<CurrentStatus> {
 
   @override
   Widget build(BuildContext context) {
-    final textStyledefault =
-        TextStyle(fontSize: 14, fontWeight: FontWeight.w600);
+    const textStyledefault = TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.w600,
+    );
     return Column(
       children: [
         const SizedBox(
@@ -91,7 +93,7 @@ class _CurrentStatusState extends State<CurrentStatus> {
               height: 40,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Color(0xffFFB973),
+                color: const Color(0xffFFB973),
               ),
               child: const Center(
                 child: Text(

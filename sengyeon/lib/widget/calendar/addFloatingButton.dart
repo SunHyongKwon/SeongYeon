@@ -1,10 +1,8 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-import 'package:table_calendar/table_calendar.dart';
 import '../../model/calendar.dart';
 import '../../repository/database_handler.dart';
 
@@ -19,9 +17,8 @@ class AddFloatingButton extends StatefulWidget {
 }
 
 class _AddFloatingButtonState extends State<AddFloatingButton> {
+//
   late DatabaseHandler handler;
-
-  CalendarFormat _calendarFormat = CalendarFormat.month;
 
   late String _selectedDate;
 
@@ -37,11 +34,14 @@ class _AddFloatingButtonState extends State<AddFloatingButton> {
   final contentController = TextEditingController(); // 메모
   final incomController = TextEditingController(); // 수입
   final expenditureController = TextEditingController(); // 지출
+  final categoryList = ["식비", "교통", "취미", "생활", "의류", "의료", "기타"];
+  late String _selectedList = "식비";
 
   @override
   void initState() {
     super.initState();
     handler = DatabaseHandler(); //생성자
+    _selectedList = categoryList[0];
 
     _selectedDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
@@ -58,20 +58,20 @@ class _AddFloatingButtonState extends State<AddFloatingButton> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 150),
-      child: FloatingActionButton(
-        elevation: 0,
-        onPressed: () {
-          _showAddEventDialog();
-        },
-        child: const Text(
-          "+",
-          style: TextStyle(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        FloatingActionButton(
+          elevation: 0,
+          onPressed: () {
+            _showAddEventDialog();
+          },
+          child: const Icon(
+            Icons.add,
             color: Colors.white,
           ),
         ),
-      ),
+      ],
     );
   }
 
@@ -87,43 +87,81 @@ class _AddFloatingButtonState extends State<AddFloatingButton> {
                 "가계부 입력",
                 textAlign: TextAlign.center,
               ),
-              content: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(_status),
-                      Switch(
-                        value: _switch,
-                        onChanged: (value) {
-                          setState(() {
-                            _switch = value;
-                            _swichOnOff();
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-                  TextField(
-                    controller: titleController,
-                    textCapitalization: TextCapitalization.words,
-                    decoration: const InputDecoration(labelText: "제목"),
-                  ),
-                  TextField(
-                    controller: amountController,
-                    textCapitalization: TextCapitalization.words,
-                    decoration: const InputDecoration(labelText: "금액"),
-                    keyboardType: TextInputType.number,
-                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  ),
-                  TextField(
-                    controller: contentController,
-                    textCapitalization: TextCapitalization.words,
-                    decoration: const InputDecoration(labelText: "메모"),
-                  ),
-                ],
+              content: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(_status),
+                        Switch(
+                          value: _switch,
+                          onChanged: (value) {
+                            setState(() {
+                              _switch = value;
+                              _swichOnOff();
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        const Text("카테고리 선택 : "),
+                        DropdownButton(
+                          underline: const SizedBox.shrink(),
+                          value: _selectedList,
+                          items: categoryList.map((String item) {
+                            return DropdownMenuItem<String>(
+                              value: item,
+                              child: Text(item),
+                            );
+                          }).toList(),
+                          onChanged: (dynamic value) {
+                            setState(() {
+                              _selectedList = value;
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          "선택된 카테고리 : $_selectedList",
+                          style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
+                    ),
+                    TextField(
+                      maxLength: 10,
+                      controller: titleController,
+                      textCapitalization: TextCapitalization.words,
+                      decoration: const InputDecoration(labelText: "제목"),
+                    ),
+                    TextField(
+                      maxLength: 9,
+                      controller: amountController,
+                      textCapitalization: TextCapitalization.words,
+                      decoration: const InputDecoration(labelText: "금액"),
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                    ),
+                    TextField(
+                      maxLength: 10, // 글자수 제한
+                      controller: contentController,
+                      textCapitalization: TextCapitalization.words,
+                      decoration: const InputDecoration(labelText: "메모"),
+                    ),
+                  ],
+                ),
               ),
               actions: [
                 TextButton(
@@ -149,29 +187,7 @@ class _AddFloatingButtonState extends State<AddFloatingButton> {
                     } else {
                       addCal();
                       widget.controller.add(_selectedDate);
-                      // 달력의 검정색 표시
-                      // if (mySelectedEvents[DateFormat("yyyy-MM-dd")
-                      //         .format(_selectedDate!)] !=
-                      //     null) {
-                      //   mySelectedEvents[
-                      //           DateFormat("yyyy-MM-dd").format(_selectedDate!)]
-                      //       ?.add({
-                      //     "Income": _status,
-                      //     "Title": titleController.text,
-                      //     "Amount": amountController.text
-                      //   });
-                      // } else {
-                      //   mySelectedEvents[
-                      //       DateFormat("yyyy-MM-dd").format(_selectedDate!)] = [
-                      //     {
-                      //       "Income": _status,
-                      //       "Title": titleController.text,
-                      //       "Amount": amountController.text,
-                      //     }
-                      //   ];
-                      // }
 
-                      print("데이터베이스 저장 ${json.encode(mySelectedEvents)}");
                       titleController.clear();
                       amountController.clear();
                       contentController.clear();
@@ -209,7 +225,8 @@ class _AddFloatingButtonState extends State<AddFloatingButton> {
         income: _status == "지출" ? 0 : int.parse(amountController.text),
         expenditure: _status == "수입" ? 0 : int.parse(amountController.text),
         content: contentController.text,
-        writeday: _selectedDate);
+        writeday: _selectedDate,
+        category: _selectedList);
 
     await handler.insertCal(addCal);
     return 0;

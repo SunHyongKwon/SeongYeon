@@ -20,7 +20,6 @@ class _CalendarCoState extends State<CalendarCo> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     _selectedDate = _focusedDay;
@@ -48,22 +47,22 @@ class _CalendarCoState extends State<CalendarCo> {
           weekendDecoration: defaultBoxDeco,
           todayDecoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6),
-            color: Color(0xffFFB973),
+            color: const Color(0xffFFB973),
           ),
           selectedDecoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(6),
             border: Border.all(
-              color: Color(0xffFFB973),
+              color: const Color(0xffFFB973),
               width: 1,
             ),
           ),
           defaultTextStyle: defaultTextStyle,
           weekendTextStyle: defaultTextStyle,
           selectedTextStyle: defaultTextStyle.copyWith(
-            color: Color(0xffFFB973),
+            color: const Color(0xffFFB973),
           ),
-          outsideDecoration: BoxDecoration(
+          outsideDecoration: const BoxDecoration(
             shape: BoxShape.rectangle,
           ),
         ),
