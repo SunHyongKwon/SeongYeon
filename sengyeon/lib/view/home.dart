@@ -113,7 +113,12 @@ class Home extends StatelessWidget {
                         },
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(30),
-                          child: Image.asset('images/food.png'),
+                          child: Image.asset(
+                            'images/food2.webp',
+                            fit: BoxFit.fill,
+                            height: 250,
+                            width: 400,
+                          ),
                         ),
                       ),
                     ),
@@ -126,6 +131,7 @@ class Home extends StatelessWidget {
                           fontSize: 24, // 글꼴 크기
                           fontWeight: FontWeight.bold, // 글꼴 가중치
                           fontStyle: FontStyle.italic, // 글꼴 스타일
+                          fontFamily: 'San Francisco',
                           letterSpacing: 1.5, // 글자 간격
                           wordSpacing: 5, // 단어 간격
                           height: 1.5, // 줄 간격
@@ -158,6 +164,42 @@ class Home extends StatelessWidget {
                       left: 30,
                       child: Text(
                         '가게부 작성',
+                        style: TextStyle(
+                          fontSize: 24, // 글꼴 크기
+                          fontWeight: FontWeight.bold, // 글꼴 가중치
+                          fontStyle: FontStyle.italic, // 글꼴 스타일
+                          letterSpacing: 1.5, // 글자 간격
+                          wordSpacing: 5, // 단어 간격
+                          height: 1.5, // 줄 간격
+                          shadows: [
+                            Shadow(
+                              offset: Offset(1, 1),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Stack(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          // controller.add(4);
+                        },
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(30),
+                          child: Image.asset('images/calc.jpeg'),
+                        ),
+                      ),
+                    ),
+                    const Positioned(
+                      top: 270,
+                      left: 30,
+                      child: Text(
+                        '계산기',
                         style: TextStyle(
                           fontSize: 24, // 글꼴 크기
                           fontWeight: FontWeight.bold, // 글꼴 가중치

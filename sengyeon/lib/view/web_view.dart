@@ -43,8 +43,8 @@ class _WebViewPageState extends State<WebViewPage> {
             child: WebView(
               initialUrl: WebViewModel.siteName,
               javascriptMode: JavascriptMode.unrestricted,
-              onWebViewCreated: (WebViewController webviewController) {
-                _controller.complete(webviewController);
+              onWebViewCreated: (WebViewController webViewController) {
+                _controller.complete(webViewController);
               },
               onPageFinished: (url) {
                 setState(() {
@@ -70,7 +70,7 @@ class _WebViewPageState extends State<WebViewPage> {
                   ),
                   child: DropdownButton(
                     hint: const SizedBox(
-                      width: 120,
+                      width: 200,
                       child: Center(
                         child: Text('업종선택'),
                       ),
@@ -89,6 +89,9 @@ class _WebViewPageState extends State<WebViewPage> {
                     onChanged: (value) {
                       loadMap(value);
                     },
+                    underline: Container(
+                      height: 0,
+                    ),
                   ),
                 ),
               ],
